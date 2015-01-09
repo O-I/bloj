@@ -1,10 +1,11 @@
 (ns bloj.core.handler
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
+            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+            [bloj.controllers.posts :as posts-controller]))
 
 (defroutes app-routes
-  (GET "/" [] "Hello World")
+  (GET "/" [] (posts-controller/index))
   (route/not-found "Not Found"))
 
 (def app
