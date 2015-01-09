@@ -6,7 +6,8 @@
                  [compojure "1.3.1"]
                  [ring/ring-defaults "0.1.2"]
                  [org.clojure/java.jdbc "0.3.5"]
-                 [postgresql "9.1-901.jdbc4"]]
+                 [postgresql "9.1-901.jdbc4"]
+                 [de.ubercode.clostache/clostache "1.3.1"]]
   :plugins [[lein-ring "0.8.13"]]
   :ring {:handler bloj.core.handler/app}
   :profiles
