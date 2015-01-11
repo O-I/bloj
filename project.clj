@@ -8,7 +8,7 @@
                  [ring/ring-jetty-adapter "1.2.1"]
                  [org.clojure/java.jdbc "0.3.5"]
                  [postgresql "9.1-901.jdbc4"]
-                 [de.ubercode.clostache/clostache "1.3.1"]]
+                 [hiccup "1.0.4"]]
   :plugins [[lein-ring "0.8.13"]]
   :ring {:handler bloj.core.handler/app}
   :profiles
