@@ -1,13 +1,20 @@
 (ns bloj.controllers.posts
   (:require
-    [clostache.parser :as clostache]))
-
-(defn read-template [template-name]
-  (slurp (clojure.java.io/resource
-    (str "views/posts/" template-name ".mustache"))))
-
-(defn render-template [template-file params]
-  (clostache/render (read-template template-file) params))
+    [compojure.core :refer [defroutes GET POST]]
+    [clojure.string :as str]
+    [ring.util.response :as ring]
+    [bloj.views.posts :as view]
+    [bloj.models.post :as model]))
 
 (defn index []
-  (render-template "index" {:name "O-I"}))
+  (view/index (model/all)))
+
+(defn create
+  [post]
+  (when-not (str/blank? post)
+    (model/create post))
+  (ring/redirect "/"))
+
+(defroutes routes
+  (GET  "/" [] (index))
+  (POST "/" [post] (create post)))
