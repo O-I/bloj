@@ -1,11 +1,13 @@
-(ns bloj.core.handler
+(ns bloj.web
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+            [compojure.handler :as handler]
             [ring.adapter.jetty :as ring]
             [bloj.controllers.posts :as posts]
             [bloj.views.layout :as layout]
-            [bloj.models.migration :as schema]))
+            [bloj.models.migration :as schema])
+  (:gen-class))
+  
 
 (defroutes app-routes
   posts/routes
@@ -13,10 +15,10 @@
   (route/not-found (layout/four-oh-four)))
 
 (def app
-  (wrap-defaults app-routes site-defaults))
+  (handler/site app-routes))
 
 (defn start [port]
-  ring/run-jetty app {:port port :join? false})
+  (ring/run-jetty app {:port port :join? false}))
 
 (defn -main []
   (schema/migrate)
