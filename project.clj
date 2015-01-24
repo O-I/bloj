@@ -7,7 +7,8 @@
                  [ring/ring-jetty-adapter "1.2.1"]
                  [org.clojure/java.jdbc "0.3.5"]
                  [postgresql "9.1-901.jdbc4"]
-                 [hiccup "1.0.4"]]
+                 [hiccup "1.0.4"]
+                 [com.cemerick/friend "0.2.1"]]
   :main ^:skip-aot bloj.web
   :uberjar-name "bloj-standalone.jar"
   :profiles {:uberjar {:aot :all}})
