@@ -5,7 +5,10 @@
             [ring.adapter.jetty :as ring]
             [bloj.controllers.posts :as posts]
             [bloj.views.layout :as layout]
-            [bloj.models.migration :as schema])
+            [bloj.models.migration :as schema]
+            [cemerick.friend :as friend]
+            (cemerick.friend [workflows :as workflows]
+                             [credentials :as creds]))
   (:gen-class))
   
 
